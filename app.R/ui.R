@@ -1,7 +1,3 @@
-####update pdf on Welcome page
-#### update instructions
-#### add sample data set
-
 
 library(shiny)
 library(shinyWidgets)
@@ -20,6 +16,7 @@ library(shinycssloaders)
 ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                                style="margin-top: -14px; padding-right:100px;padding-bottom:10px",
                                height = 60)),
+                 windowTitle='MaltVis',
                  theme = shinytheme("yeti"),
                  
                  tabPanel("Welcome", 
@@ -51,12 +48,12 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
 ",
                           br(),
                           br(),
-                          em('MaltVis was developed by Curtis Davenport and Andrew Caffrey of Admiral Maltings. Feel free to email maltvis@admiralmaltings.com with any questions, comments, or other feedback. Feeling advanced? If you want to run MaltVis locally, or want to contribute new features, find the MaltVis source code on',a(href='https://github.com/curtisdavenport/MaltVis', 'GitHub')),
+                          em('MaltVis was developed by Curtis Davenport and Andrew Caffrey of Admiral Maltings. Feel free to email maltvis@admiralmaltings.com with any questions, comments, or other feedback. Feeling advanced? If you want to run MaltVis locally, or want to contribute new features, find the MaltVis source code on',a(href='https://github.com/curtisdavenport/MaltVis_CraftMaltstersGuild', 'GitHub',target="_blank")),
                           
                           style="margin-right:300px; margin-left:20px"),
                  
                  
-                 ###need to update instructions on Welcome page
+                 
                  tabPanel("SOP",
                           tags$iframe(src="Welcome.pdf",height=500,width=850)),
                  
@@ -65,13 +62,15 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                           fileInput("file", "Upload .csv of latest data",
                                     accept = c('.csv')
                           ),
-                          actionButton("load", "Click Here to Load")),
+                          actionButton("load", "Click Here to Load"),
+                          br(),
+                          p('Or use this', a(href='https://docs.google.com/spreadsheets/d/11d3_Wv78W6MCjpSPxNk1lTBJmC8mdDpA3aM-Vz5yewQ/edit#gid=0',"link",target="_blank"), 'to download a sample dataset')),
                  
                  
                  
                  tabPanel("BatchVis",
-                          textInput("Batch","Batch #/ID"),
-                          sliderInput("visnumber","# of last batches to compare against", min=0,max=0,step=1,value = NULL),
+                          textInput("Batch","Batch ID/#"),
+                          sliderInput("visnumber","# of last batches to compare with", min=0,max=0,step=1,value = NULL),
                           actionButton("batchvisgo","Submit"),
                           p(strong("Style:")),
                           textOutput("Style"),
@@ -131,7 +130,6 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                  
                  tabPanel("Help",
                           tags$iframe(src="Help.pdf",height=800,width=850))
-                 
                  
                  
 )
