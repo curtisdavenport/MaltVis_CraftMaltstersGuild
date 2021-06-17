@@ -7,6 +7,7 @@ server <- function(input, output, session) {
     req(inFile)
     D <- read.csv(inFile$datapath, header = TRUE, sep = ",", quote = "'")
     D$Crop.Year<-as.character(D$Crop.Year)
+    D$Batch..<-as.character(D$Batch..)
     D
   })
   
