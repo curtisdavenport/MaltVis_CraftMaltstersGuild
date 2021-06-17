@@ -227,7 +227,7 @@ server <- function(input, output, session) {
   output$correlation<-renderText({
     P<-c(input$columns1,input$columns2)
     Data()%>%
-      filter(`Style`%in%input$style)%>%
+      filter(`Style`%in%input$style,`Crop.Year`%in%input$viscropyear,`Variety`%in%input$visvariety)%>%
       select(any_of(P))%>%
       remove_missing()%$%
       cor(x=as.numeric(.[[input$columns1]]),
