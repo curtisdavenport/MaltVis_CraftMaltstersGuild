@@ -70,7 +70,7 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                  
                  tabPanel("BatchVis",
                           textInput("Batch","Batch ID/#"),
-                          sliderInput("visnumber","# of last batches to compare with", min=0,max=0,step=1,value = NULL),
+                          sliderInput("visnumber","# of last batches to compare with", min=1,max=33,step=1,value =2),
                           actionButton("batchvisgo","Submit"),
                           p(strong("Style:")),
                           textOutput("Style"),
