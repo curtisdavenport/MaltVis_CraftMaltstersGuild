@@ -91,10 +91,14 @@ server <- function(input, output, session) {
   #normalize data to the mean
   Data4<-eventReactive(input$batchvisgo, {
     Sty<-Data()%>%filter(`Batch..`==input$Batch)%>%pull("Style")
+    B<-Data()%>%
+      filter(`Batch..`==input$Batch)%>%
+      select(any_of(AllParameters)))
     D15<-Data()%>%
       filter(.,`Style`==Sty)%>%
       slice_tail(n=input$visnumber)%>%
       select(any_of(AllParameters()))%>%
+      rbind(.,B)%>%
       mutate_at(vars(colnames(.[-c(1:2)])),funs(./mean(.,na.rm = T)))
     D15
   })
