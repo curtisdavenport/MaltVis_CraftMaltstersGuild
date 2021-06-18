@@ -81,10 +81,10 @@ server <- function(input, output, session) {
   
   ##BatchVis
   
-  #variables to be plotted on BtachVis
+  #variables to be plotted on BatchVis- MUST MATCH VERBATIM. If names are different, that parameter just won't show up in BatchVis
   AllParameters<-eventReactive(input$load,{
     c("Batch..","Style","Total.Protein","Soluble.Protein",
-      "S.T","pH","Hartwick.Friability","FAN","Extract",
+      "S.T","pH","Lab.Friability","FAN","Extract",
       "DP","Color","B.Glucan","AA")
   })
   
@@ -93,7 +93,7 @@ server <- function(input, output, session) {
     Sty<-Data()%>%filter(`Batch..`==input$Batch)%>%pull("Style")
     B<-Data()%>%
       filter(`Batch..`==input$Batch)%>%
-      select(any_of(AllParameters)))
+      select(any_of(AllParameters()))
     D15<-Data()%>%
       filter(.,`Style`==Sty)%>%
       slice_tail(n=input$visnumber)%>%
