@@ -57,14 +57,12 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                           
                           
                           style="margin-right:300px; margin-left:20px"),
-                        
-                
-                 
                  tabPanel("SOP",
                           tags$iframe(src="MaltVis SOPs_Current.pdf",height=500,width=1200)),
                  
                  
-                 tabPanel("Upload",
+
+                  tabPanel("Upload",
                           fileInput("file", "Upload .csv of latest data",
                                     accept = c('.csv')
                           ),
@@ -125,7 +123,7 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                           textOutput("correlation"),
                           plotlyOutput("visplot")
                  ),
-                 tabPanel("Look Up Data",
+                 tabPanel("Data Table",
                           textInput("batch", "Batch #"),
                           pickerInput("style3","Style",choices = NULL,
                                       options = list(`actions-box` = TRUE),
@@ -136,5 +134,5 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                           dataTableOutput("lookupdata"))
                  
                  
-                
+                 
 )
