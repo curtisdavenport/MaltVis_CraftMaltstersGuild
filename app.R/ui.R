@@ -61,7 +61,7 @@ ui <- navbarPage(title=div(img(src="cropped-CMG_Web_logo_small.png",
                 
                  
                  tabPanel("SOP",
-                          tags$iframe(src="MaltVis SOPs (1).pdf",height=500,width=1200)),
+                          tags$iframe(src="MaltVis SOPs_Current.pdf",height=500,width=1200)),
                  
                  
                  tabPanel("Upload",
